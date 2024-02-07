@@ -21,7 +21,15 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        $num_utenti = $this->command->ask("Quanti utenti?");
+        //$svuota_utenti = $this->command->ask("Svuoto la tabella utenti? [Y/N]");
+        //Svuota la tabella user prima di popolarla.
+        //FATE ATTENZIONE! va usato solo in un if ben congegnato
+        // Schema::disableForeignKeyConstraints();
+        // User::truncate();
+        // Schema::enableForeignKeyConstraints();
+
+        //"Validazione" input
+        $num_utenti = $this->command->ask("Quanti utenti? ");
         $num_eventi = $this->command->ask("Quanti eventi?");
 
         $this->call(UserSeeder::class, false, compact("num_utenti"));
